@@ -32,7 +32,7 @@ Route::get('/bootSearch', function()
 	
 });
 
-Route::post('/pull', function()
+Route::any('/pull', function()
 {
 	return View::make('pull');
 });
