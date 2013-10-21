@@ -16,6 +16,43 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+
+Route::get('/bootSearch', function()
+{
+    if (Holmes::is_mobile() == true)
+    {
+        return View::make('bootSearchMobile');
+    }
+    else
+    {
+        return View::make('sneakerSearch');
+    }
+
+
+	
+});
+
+Route::post('/eastbay', function()
+{
+	return View::make('eastbay');
+});
+Route::any('/proDirect', function()
+{
+	return View::make('proDirect');
+});
+Route::any('/wegotsoccer', function()
+{
+	return View::make('wegotsoccer');
+});
+Route::any('/worldsoccershop', function()
+{
+	return View::make('worldsoccershop');
+});
+
+
+
+
+
 Route::get('home', array('before' => 'auth', 'do' => function() {
     return View::make('home');
 }));

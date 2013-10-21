@@ -23,4 +23,5 @@
 @section("footer")
     @parent
     <script src="//polyfill.io"></script>
+    
 @stop
