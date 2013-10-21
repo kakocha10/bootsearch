@@ -131,7 +131,7 @@ $(document).ready(function(){
     echo Holmes::is_mobile();
   ?>
 <div id="eastBayOutside" class="outerContainer">
-    <h1>Eastbayy</h1>
+    <h1>Eastbay</h1>
     <div id="eastBayContainer" class="results" class="results"><img id="eastBayLoading" style="display:none;"src="http://i.stack.imgur.com/FhHRx.gif"/><!-- currently it's empty --></div>
 </div>
 <div id="proDirectOutside" class="outerContainer">
