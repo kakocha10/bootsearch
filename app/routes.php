@@ -13,7 +13,19 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('search');
+});
+
+Route::post('/submitSearch', function()
+{
+	if (Holmes::is_mobile() == true)
+    {
+        return View::make('bootSearchMobile');
+    }
+    else
+    {
+        return View::make('sneakerSearch');
+    }
 });
 
 
