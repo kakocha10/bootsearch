@@ -32,6 +32,11 @@ Route::get('/bootSearch', function()
 	
 });
 
+Route::post('/pull', function()
+{
+	return View::make('pull');
+});
+
 Route::post('/eastbay', function()
 {
 	return View::make('eastbay');

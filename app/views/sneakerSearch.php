@@ -135,7 +135,7 @@ $(document).ready(function(){
     <div id="eastBayContainer" class="results" class="results"><img id="eastBayLoading" style="display:none;"src="http://i.stack.imgur.com/FhHRx.gif"/><!-- currently it's empty --></div>
 </div>
 <div id="proDirectOutside" class="outerContainer">
-    <h1>Pro Direct</h1>
+    <h1>Pro Direct Soccer</h1>
     <div id="proDirectContainer" class="results" class="results"><img id="proDirectLoading" style="display:none;"src="http://i.stack.imgur.com/FhHRx.gif"/><!-- currently it's empty --></div>
 </div>
 <div id="worldSoccerOutside" class="outerContainer">
