@@ -1,0 +1,12 @@
+[10-Oct-2013 17:11:41] PHP Fatal error:  Call to undefined function asset() in /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php on line 2
+[10-Oct-2013 17:11:41] PHP Stack trace:
+[10-Oct-2013 17:11:41] PHP   1. {main}() /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php:0
+[10-Oct-2013 17:11:52] PHP Fatal error:  Call to undefined function asset() in /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php on line 2
+[10-Oct-2013 17:11:52] PHP Stack trace:
+[10-Oct-2013 17:11:52] PHP   1. {main}() /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php:0
+[10-Oct-2013 17:12:20] PHP Fatal error:  Call to undefined function asset() in /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php on line 2
+[10-Oct-2013 17:12:20] PHP Stack trace:
+[10-Oct-2013 17:12:20] PHP   1. {main}() /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php:0
+[10-Oct-2013 17:12:20] PHP Fatal error:  Call to undefined function asset() in /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php on line 2
+[10-Oct-2013 17:12:20] PHP Stack trace:
+[10-Oct-2013 17:12:20] PHP   1. {main}() /var/lib/stickshift/525470fc5973caa48f000248/app-root/data/640658/laravel/app/views/dataTableTest.php:0
