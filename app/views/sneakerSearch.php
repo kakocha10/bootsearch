@@ -75,23 +75,27 @@ $(document).ready(function(){
     $.ajax({
         url: './eastbay',
         type: 'POST',
-        data: ({searchString: "copa mundial"}),
+        data: ({searchString: "<?php echo $searchString; ?>"}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             $('#eastBayLoading').show();
+                      <?php session_write_close(); ?>
           },
         success: function (data) {
             $('#eastBayLoading').hide();
             $('#eastBayContainer').html(data);
+
         }
     });
     $.ajax({
         url: './proDirect',
         type: 'POST',
-        data: ({searchString: "copa mundial"}),
+        data: ({searchString: "<?php echo $searchString; ?>"}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             $('#proDirectLoading').show();
+                      <?php session_write_close(); ?>
+
           },
         success: function (data) {
             $('#proDirectLoading').hide();
@@ -101,10 +105,12 @@ $(document).ready(function(){
      $.ajax({
         url: './worldsoccershop',
         type: 'POST',
-        data: ({searchString: "copa mundial"}),
+        data: ({searchString: "<?php echo $searchString; ?>"}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             $('#worldSoccerLoading').show();
+                      <?php session_write_close(); ?>
+
           },
         success: function (data) {
             $('#worldSoccerLoading').hide();
@@ -114,10 +120,12 @@ $(document).ready(function(){
          $.ajax({
         url: './wegotsoccer',
         type: 'POST',
-        data: ({searchString: "copa mundial"}),
+        data: ({searchString: "<?php echo $searchString; ?>"}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             $('#weGotSoccerLoading').show();
+                      <?php session_write_close(); ?>
+
           },
         success: function (data) {
             $('#weGotSoccerLoading').hide();
@@ -128,8 +136,9 @@ $(document).ready(function(){
 </script>
 <body>
   <?php
-    echo Holmes::is_mobile();
+    echo "Searching for: " . $searchString;
   ?>
+    
 <div id="eastBayOutside" class="outerContainer">
     <h1>Eastbay</h1>
     <div id="eastBayContainer" class="results" class="results"><img id="eastBayLoading" style="display:none;"src="http://i.stack.imgur.com/FhHRx.gif"/><!-- currently it's empty --></div>

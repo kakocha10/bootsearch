@@ -1,14 +1,23 @@
 <?php
 include ('simple_html_dom.php');
+$searchText = $_POST['searchString'];
+$searchText = preg_replace('/\s+/', '%20', $searchText);
 $eastbay_url = 'html/copaMundialWorldSoccer.html';
-//$request_url = 'http://nrlfantasy.dailytelegraph.com.au/statscentre/topplayers?';
-$html = file_get_html($eastbay_url);
-$collection1 = $html->find(".sli_products");
+$worldsoccershop_url = 'http://soccer-gear.worldsoccershop.com/search?w=' . $searchText . '&asug=&ts=ajax';
+$html = file_get_html($worldsoccershop_url);
+//echo $html
+//$collection1 = $html->find(".sli_content");
  
  //echo $spans[0] . " " . $_POST['searchString'];
  //echo "\n";
 // echo "\n";
- $boots = $collection1[0]->find(".contents");
+//echo sizeof($collection1);
+ $boots = $html->find(".contents");
+if (sizeof($boots) == 0)
+{
+    echo "No Results found";
+    exit();
+}
 
 $i = 0;
 do {
@@ -23,7 +32,14 @@ do {
     $imgLink = $imgLink[0]->src;
     
     $price = $li->find('.section-price');
-    $price = $price[0]->plaintext;
+    if (sizeof($price) == 0)
+    {
+        $price = $li->find('.section-sale-price');
+        $price = $price[0]->plaintext;
+    }else
+    {
+        $price = $price[0]->plaintext;
+    }    
     
     if (Holmes::is_mobile() == true)
     {
@@ -39,6 +55,9 @@ do {
     }
     
     $i++;
-} while ($i < 5 && $i < sizeof($boots));
+
+    unset($price);
+    unset($li);
+} while ($i < 4 && $i < sizeof($boots));
 
 ?>

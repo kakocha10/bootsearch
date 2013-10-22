@@ -1,11 +1,47 @@
 <?php
+
+function get_data($url) {
+    $ch = curl_init();
+    $timeout = 5;
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+    $userAgent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)';
+    curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+}
+$searchText = $_POST['searchString'];
+$searchText = preg_replace('/\s+/', '+', $searchText);
+$searchUrl = 'http://www.wegotsoccer.com/storeitems.aspx?searchword=' . $searchText;
+$returned_content = get_data($searchUrl);
+//echo $returned_content;
+// $homepage = file_get_contents('http://www.example.com/');
+// echo $homepage;
 include ('simple_html_dom.php');
-$wegotsoccer_url = 'html/copaMundialWeGotSoccer.html';
+// $searchText = $_POST['searchString'];
+// $searchText = preg_replace('/\s+/', '%20', $searchText);
+//$wegotsoccer_url = 'html/copaMundialWeGotSoccer.html';
+//$wegotsoccer_url = 'http://www.wegotsoccer.com/storeitems.aspx?ss=predator';
 //http://www.wegotsoccer.com/storeitems.aspx?searchword=copa%20mundial
 //http://www.wegotsoccer.com/storeitems.aspx?depart=soccer-shoes&searchword=copa%20mundial
 //$request_url = 'http://nrlfantasy.dailytelegraph.com.au/statscentre/topplayers?';
-$html = file_get_html($wegotsoccer_url);
+ $html = str_get_html($returned_content);
+// echo $html;
+
+
+
+
+
+
+
 $collection1 = $html->find(".radius");
+//echo sizeof($collection1);
 $results = $collection1[0];
 // $searchResultsInfo = $html->find("#searchResultsInfo");
 // $spans = $searchResultsInfo[0]->find("span");
@@ -42,6 +78,6 @@ do {
     }
     
     $i++;
-} while ($i < 5 && $i < sizeof($bootLink));
+} while ($i < 4 && $i < sizeof($bootLink));
 
 ?>

@@ -1,32 +1,51 @@
 <?php
 include ('simple_html_dom.php');
 
-$eastbay_url = 'html/copaMundialEastBay.html';
-//http://www.eastbay.com/_-_/keyword-copa+mundial
-//$request_url = 'http://nrlfantasy.dailytelegraph.com.au/statscentre/topplayers?';
-$html = file_get_html($eastbay_url);
+//$eastbay_url = 'http://www.eastbay.com/_-_/keyword-copa+mundial';
+//$eastbay_url2 = 'http://www.eastbay.com/_-_/keyword-' . $_POST['searchString'];
+$searchText = $_POST['searchString'];
+$searchText = preg_replace('/\s+/', '+', $searchText);
+
+//$eastbay_url3 = 'http://www.eastbay.com/Shoes/_-_/N-ne/keyword-' . $searchText . '?cm_REF=Shoes';
+//$eastbay_url3 = 'http://www.eastbay.com/Shoes/Cleats/_-_/N-neZc3/keyword-' . $searchText . '?cm_REF=Cleats';
+//$eastbay_url3 = 'http://www.eastbay.com/Shoes/_-_/N-ne/keyword-' . $searchText . '?Ns=P_TopSalesAmount%7C1&cm_SORT=Best+Sellers';
+$eastbay_url3 = 'http://www.eastbay.com/Soccer/Shoes/_-_/N-1e0Zne/keyword-' . $searchText . '?Ns=P_TopSalesAmount%7C1&cm_REF=Shoes';
+$html = file_get_html($eastbay_url3);
 $collection1 = $html->find("#endeca_search_results");
 $searchResultsInfo = $html->find("#searchResultsInfo");
+
+if (sizeof($searchResultsInfo) == 0)
+{
+    echo "No Results found";
+    exit();
+}
+
 $spans = $searchResultsInfo[0]->find("span");
  
- //echo $spans[0] . " " . $_POST['searchString'];
-// echo "<div></div>";
+ echo $spans[0] . " " . $_POST['searchString'];
+echo "<div></div>";
 
-$collection = $collection1[0]->find("li");
-$li = $collection[0];
-
+ $collection = $collection1[0]->find("li");
+ $li = $collection[0];
+ 
 $i = 0;
 do {
     $li = $collection[$i];
-    $quickviewButton = $li->find('a');
+    //echo $li;
+    if ($li->class == 'clearRow')
+    {
+        $i++;
+        continue;
+    }
+     $quickviewButton = $li->find('a');
+     $firstA = $quickviewButton[0];
+     $link = $firstA->href;
 
-    $link = $quickviewButton[1]->href;
+    // $name = $li->find("span");
+     $name = $firstA->plaintext;
 
-    $name = $li->find("span");
-    $name = $name[0]->plaintext;
-
-    $imgLink = $li->find('img');
-    $imgLink = $imgLink[1]->src;
+     $imgLink = $li->find('img');
+     $imgLink = $imgLink[0]->src;
 
     $price = $li->find('.product_price');
     $price = $price[0]->plaintext;
@@ -43,7 +62,11 @@ do {
         echo "<div class=\"price\">" . $price . "</div>";
         echo "</div>";
     }
-
+     unset($li);
+     unset($quickviewButton);
+     unset($firstA);
+     unset($link);
+     unset($name);
     $i++;
 } while ($i < 5 && $i < sizeof($collection));
 

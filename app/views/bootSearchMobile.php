@@ -22,7 +22,7 @@ $(document).ready(function(){
     $.ajax({
         url: './eastbay',
         type: 'POST',
-        data: ({searchString: "copa mundial",mobile:true}),
+        data: ({searchString: "<?php echo $searchString; ?>",mobile:true}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             // $('#eastBayLoading').show();
@@ -36,7 +36,7 @@ $(document).ready(function(){
     $.ajax({
         url: './proDirect',
         type: 'POST',
-        data: ({searchString: "copa mundial",mobile:true}),
+        data: ({searchString: "<?php echo $searchString; ?>",mobile:true}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             $('#proDirectLoading').show();
@@ -50,7 +50,7 @@ $(document).ready(function(){
      $.ajax({
         url: './worldsoccershop',
         type: 'POST',
-        data: ({searchString: "copa mundial",mobile:true}),
+        data: ({searchString: "<?php echo $searchString; ?>",mobile:true}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             $('#worldSoccerLoading').show();
@@ -64,7 +64,7 @@ $(document).ready(function(){
          $.ajax({
         url: './wegotsoccer',
         type: 'POST',
-        data: ({searchString: "copa mundial",mobile:true}),
+        data: ({searchString: "<?php echo $searchString; ?>",mobile:true}),
         dataType: 'html',
         beforeSend: function( xhr ) {
             // $('#weGotSoccerLoading').show();

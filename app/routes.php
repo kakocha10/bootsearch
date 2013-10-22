@@ -18,13 +18,15 @@ Route::get('/', function()
 
 Route::post('/submitSearch', function()
 {
-	if (Holmes::is_mobile() == true)
+	$bootInput = Input::get('bootDetails');
+
+    if (Holmes::is_mobile() == true)
     {
-        return View::make('bootSearchMobile');
+        return View::make('bootSearchMobile')->with('searchString', $bootInput);
     }
     else
     {
-        return View::make('sneakerSearch');
+        return View::make('sneakerSearch')->with('searchString', $bootInput);
     }
 });
 
@@ -50,7 +52,7 @@ Route::any('/pull', function()
 });
 
 
-Route::post('/eastbay', function()
+Route::any('/eastbay', function()
 {
 	return View::make('eastbay');
 });
